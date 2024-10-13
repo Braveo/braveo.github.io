@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+    <textarea id="input" name="input" rows="4" cols="50" oninput="changeText()">Bravo</textarea>
+    <p id="output"></p>
+
+</body>
+<script>
+
+    window.onload = changeText();
+
+    /** 
+     * Checks if a string is upper case
+     * @param {string} str
+    */
+    function isUpperCase(str) {
+        return str != "" && str === str.toUpperCase();
+    }
+
+    function changeText() {
+
+        let inputElement = document.getElementById("input");
+        let outputElement = document.getElementById("output");
+
+        /** @type {string} */
+        let inputText = inputElement.value;
+
+        if (isUpperCase(inputText)) {
+
+            inputText = inputText.toUpperCase();
+            
+        }
+
+        let newText = "";
+
+        for (let i = 0; i < inputText.length; i++) {
+
+            newText += (inputText[i].toUpperCase().charCodeAt(0) - "A".charCodeAt(0)).toString(16).toUpperCase();
+
+        }
+
+        outputElement.innerHTML = newText;
+
+    }
+
+</script>
+</html>
